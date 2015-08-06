@@ -31,8 +31,10 @@
         </div>
         <div class="row" id="message-id-row">       
             <div class="col-md-offset-3" data-post-id="{{message.id}}">
+                {% if user.is_authenticated %}
                     <button class="btn" id="favorite-btn"><i class="glyphicon glyphicon-star"></i>Favorite</button>
                     <button class="btn" id="unfavorite-btn"><i class="glyphicon glyphicon-star"></i>Un-Favorite</button>
+                {% endif %}
                 {% if user.is_superuser %}
                     <button class="btn" id="pin-btn"><i class="glyphicon glyphicon-pushpin"></i> Pin to the home page</button>
                     <button class="btn" id="delete-message"><i class="glyphicon glyphicon-trash"></i> Delete this message</button>
@@ -42,7 +44,9 @@
         <br>
         <div class="row">
             <div class="col-md-offset-3">
+            {% if user.is_authenticated %}
                 <button class="btn" id="create-message-comment">Post a Comment</button>
+            {% endif %}
             </div>
         </div>
         <div class="row" id="comment-form">
