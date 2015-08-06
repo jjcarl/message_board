@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container" id="create-message-form">
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-10">
+                <form class="col-sm-offset-2 col-sm-8" enctype="multipart/form-data" id="create-message-form" action="{% url 'create_message' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="author" value="{{user.id}}">
+                    <input type="hidden" name="id" value="">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="titleInput">Title</label>
+                                <input type="text" class="form-control" name="title" placeholder="Title">
+                                <p class="help-block">Type your message title in here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="messageInput">Message</label>
+                                <input type="text" class="form-control" name="text" placeholder="Your message content">
+                                <p class="help-block">Type your message text in here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fileInput"><i class="glyphicon glyphicon-floppy-disk"></i>Load a file</label>
+                        <input type="file" name="media">
+                        <img id="media-upload-on-form" src="">
+                    </div>
+                    <button id="create-message-button" class="btn btn-default" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

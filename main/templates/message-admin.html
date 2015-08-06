@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h1><center>This is message admin</center></h1>
+        <div class="row">
+            <div class="col-sm-10 all-messages">
+                
+                {% for message in messages %}
+                    <div class="row" data-post-id="{{message.id}}">
+                        <div class="col-sm-offset-2 col-sm-8" id="message-title">
+                            <h2>{{message.title}}</h2>
+                            <p>{{message.text}}</p>
+                            {% if message.media %}
+                                <img src="{{message.media.url}}">
+                            {% endif %}
+                            <p>Posted by {{message.author}} on {{message.date_posted}}.</p>
+                            <div>
+                                <button class="btn one-message">Delete this post</button>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5" id="create-account-form">
+                <form method="POST" action="{% url 'create_account' %}">
+                    {% csrf_token %}
+                    <p class="text-danger">{{ new_user_form.non_field_errors }}</p>
+                    <input type="hidden" name="type" value="create_user">
+                    <div class="form-group">
+                        {{ new_user_form.username.errors }}
+                        <label for="username-create">Username</label>
+                        <input type="text" name="username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        {{ new_user_form.password1.errors }}
+                        <label for="password-create">Password</label>
+                        <input type="password" name="password1" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        {{ new_user_form.password2.errors }}
+                        <label for="password-create">Confirm Password</label>
+                        <input type="password" name="password2" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        {{ new_user_form.email.errors }}
+                        <label for="email-create">Email Address</label>
+                        <input type="email" name="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

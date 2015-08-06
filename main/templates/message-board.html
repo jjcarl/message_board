@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container" id="message-board-container">
+    <div class="message-board-header">
+        <h1 class="page-title">Welcome to the message board!</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-3" id="message-board-index">
+        <h2>Index</h2>
+        <hr>
+         
+            <!--<div>
+                <button id="refresh-content" class="btn"><i class="glyphicon glyphicon-refresh"></i> Refresh Messages</button>
+            </div> -->
+            <div class="row">
+                <div class="col-sm-12" id="message-list">
+                    
+                </div>
+            </div>
+
+            <div id="load-more-messages"><center><img src="{% static 'img/ripple.gif' %}"></center></div>
+        </div>
+        <div class="col-sm-8">
+            <div class="pinned-content">
+                {% for message in messages %}
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-8" id="short-message">
+                            <a href="{% url 'message_detail' id=message.id %}">
+                                <h2 class="message-title">{{message.title}}</h2>
+                                <p class="message-text">{{message.text | truncatewords:'30'}}</p>
+                                {% if message.media %}
+                                    <img src="{{message.media.url}}">
+                                {% endif %}
+                            </a>   
+                            <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block js %}
+    <script src="{% static 'js/message-board.js' %}"></script>
+{% endblock js %}

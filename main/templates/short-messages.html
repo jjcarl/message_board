@@ -1,0 +1,15 @@
+{% for message in messages %}
+    <div class="row">
+        <div class="col-sm-10" id="short-message">
+            <a href="{% url 'message_detail' id=message.id %}">
+                <h3 class="message-title">{{message.title}}</h3>
+                <p class="message-text">{{message.text | truncatewords:'10'}}</p>
+                {% if message.media %}
+                    <img src="{{message.media.url}}">
+                {% endif %}
+            </a>   
+            <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+        </div>
+    </div>
+    <hr>
+{% endfor %}
