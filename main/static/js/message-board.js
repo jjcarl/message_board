@@ -38,13 +38,3 @@ $(window).scroll(function() {
         });
     }
 });
-
-$('#refresh-content').on('click', function(){
-
-    $.ajax({
-        url: '/message/short-messages/',
-        success: function(result){
-            $('#message-list').html(result);
-        }
-    });
-});

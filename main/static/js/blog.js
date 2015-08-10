@@ -91,6 +91,9 @@ $('#delete-message').click(function(e){
             beforeSend: function(xhr){
                 xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"))
             },
+            success: function(){
+                window.location.href = '/message/message-board/';
+            }
         })
     }
     
@@ -101,7 +104,79 @@ $('#create-message-comment').click(function(e){
     $('#comment-form').show();
 });
 
+// ============== Edit Message ===========
+
+$('#edit-message-btn').click(function(e){
+    e.preventDefault();
+    $('#edit-message-form').show();
+    var id = $(this).parent().attr('data-post-id');
+
+    $.get('/message/message-detail/' + id + '/json/', function(data){
+
+        var text = data[0].fields.text
+        var title = data[0].fields.title
+        var id = data[0].pk
+        var author = data[0].fields.author
+        var media = data[0].fields.media
+        var file_type = data[0].fields.file_type
+
+        $('#edit-message-form input[name="author"]').val(author);
+        $('#edit-message-form input[name="title"]').val(title);
+        $('#edit-message-form textarea[name="text"]').val(text);
+        $('#edit-message-form input[name="id"]').val(id);
+        if (media.length > 0){
+            $('#edit-message-form select[name="file_type"]').val(file_type);
+        }
+    });
+})
+
+$('#cancel-button').click(function(e){
+    e.preventDefault();
+    clearForm();
+});
+
+function clearForm(){
+    $('#edit-message-form input[name="author"]').val('');
+    $('#edit-message-form input[name="title"]').val('');
+    $('#edit-message-form textarea[name="text"]').val('');
+    $('#edit-message-form input[name="id"]').val('');
+    $('#edit-message-form input[name="media"]').val('');
+    $('#edit-message-form').hide();
+}
+
+
+
 // $('#submit-message-comment').click(function(e){
 //     e.preventDefault();
 //     $('#comment-form').hide();
 // });
+
+// Navigation Scripts to Show Header on Scroll-Up
+jQuery(document).ready(function($) {
+    var MQL = 1170;
+
+    //primary navigation slide-in effect
+    if ($(window).width() > MQL) {
+        var headerHeight = $('.navbar-custom').height();
+        $(window).on('scroll', {
+                previousTop: 0
+            },
+            function() {
+                var currentTop = $(window).scrollTop();
+                //check if user is scrolling up
+                if (currentTop < this.previousTop) {
+                    //if scrolling up...
+                    if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
+                        $('.navbar-custom').addClass('is-visible');
+                    } else {
+                        $('.navbar-custom').removeClass('is-visible is-fixed');
+                    }
+                } else {
+                    //if scrolling down...
+                    $('.navbar-custom').removeClass('is-visible');
+                    if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
+                }
+                this.previousTop = currentTop;
+            });
+    }
+});

@@ -8,31 +8,33 @@
         <h1 class="page-title">Welcome to the message board!</h1>
     </div>
     <div class="row">
+        <!-- =====The Index of all messages ===== -->
         <div class="col-sm-3" id="message-board-index">
-        <h2>Index</h2>
+        <h2><center>Index</center></h2>
         <hr>
-         
-            <!--<div>
-                <button id="refresh-content" class="btn"><i class="glyphicon glyphicon-refresh"></i> Refresh Messages</button>
-            </div> -->
             <div class="row">
                 <div class="col-sm-12" id="message-list">
-                    
                 </div>
             </div>
-
             <div id="load-more-messages"><center><img src="{% static 'img/ripple.gif' %}"></center></div>
         </div>
+        <!-- ===== The Pinned content ===== -->
         <div class="col-sm-8">
             <div class="pinned-content">
                 {% for message in messages %}
                     <div class="row">
-                        <div class="col-sm-offset-3 col-sm-8" id="short-message">
+                        <div class="col-sm-offset-1 col-sm-10" id="short-message">
                             <a href="{% url 'message_detail' id=message.id %}">
                                 <h2 class="message-title">{{message.title}}</h2>
                                 <p class="message-text">{{message.text | truncatewords:'30'}}</p>
                                 {% if message.media %}
-                                    <img src="{{message.media.url}}">
+                                    {% if message.file_type == 'IMG' %}
+                                        <img id="message-media-div" src="{{message.media.url}}">
+                                    {% elif message.file_type == 'VID' %}
+                                        <video src="{{message.media.url}}" width="600" height="auto" controls></video>
+                                    {% elif message.file_type == 'AUD' %}
+                                        <audio src="{{message.media.url}}" controls></audio>
+                                    {% endif %}
                                 {% endif %}
                             </a>   
                             <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>

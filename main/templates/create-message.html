@@ -4,14 +4,14 @@
     <div class="container" id="create-message-form">
         <div class="row">
             <div class="col-sm-offset-1 col-sm-10">
-                <form class="col-sm-offset-2 col-sm-8" enctype="multipart/form-data" id="create-message-form" action="{% url 'create_message' %}" method="POST">
+                <form class="col-sm-offset-2 col-sm-12" enctype="multipart/form-data" id="create-message-form" action="{% url 'create_message' %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="author" value="{{user.id}}">
                     <input type="hidden" name="id" value="">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="titleInput">Title</label>
+                                <label for="title-input">Title</label>
                                 <input type="text" class="form-control" name="title" placeholder="Title">
                                 <p class="help-block">Type your message title in here.</p>
                             </div>
@@ -20,16 +20,27 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="messageInput">Message</label>
-                                <input type="text" class="form-control" name="text" placeholder="Your message content">
+                                <label for="message-input">Message</label>
+                                <textarea class="form-control" name="text" placeholder="Your message content" id="message-text-box"></textarea>              
                                 <p class="help-block">Type your message text in here</p>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="fileInput"><i class="glyphicon glyphicon-floppy-disk"></i>Load a file</label>
+                        <label for="file-input"><i class="glyphicon glyphicon-floppy-disk"></i>Load a file</label>
                         <input type="file" name="media">
                         <img id="media-upload-on-form" src="">
+                    </div>
+                    <div class="form-group">
+                        <label for="file-type">Media Type</label>
+                        <br>
+                        <select name="file_type" id="file-type-selector">
+                            <option value="">Select</option>
+                            <option value="IMG" name="IMAGE">Image</option>
+                            <option value="VID" name="VIDEO">Video</option>
+                            <option value="AUD" name="AUDIO">Audio</option>
+                        </select>
+                    <p class="text-danger help-block">You must select a media type when uploading a file.</p>
                     </div>
                     <button id="create-message-button" class="btn btn-default" type="submit">Submit</button>
                 </form>

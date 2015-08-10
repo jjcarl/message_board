@@ -6,6 +6,7 @@ from main.views import MessageDetail
 
 urlpatterns = [
     url(r'^$', 'main.views.new', name='new'),
+    url(r'^home/$', 'main.views.home', name='home'),
     url(r'^create-message/$',
         'main.views.create_message', name='create_message'),
     url(r'^message-board/$', 'main.views.message_board', name='message_board'),
@@ -15,6 +16,8 @@ urlpatterns = [
         'main.views.short_messages', name='short_messages'),
     url(r'^message-detail/(?P<id>[0-9]+)/$',
         MessageDetail.as_view(), name='message_detail'),
+    url(r'^message-detail/(?P<id>[0-9]+)/json/$',
+        'main.views.message_json', name='message_json'),
     url(r'^login/$', views.login,
         {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', views.logout,

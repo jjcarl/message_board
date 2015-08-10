@@ -13,7 +13,13 @@
                             <h2>{{message.title}}</h2>
                             <p>{{message.text}}</p>
                             {% if message.media %}
-                                <img src="{{message.media.url}}">
+                                {% if message.file_type == 'IMG' %}
+                                        <img id="message-media-div" src="{{message.media.url}}">
+                                    {% elif message.file_type == 'VID' %}
+                                        <video src="{{message.media.url}}" width="600" height="auto" controls></video>
+                                    {% elif message.file_type == 'AUD' %}
+                                        <audio src="{{message.media.url}}" controls></audio>
+                                    {% endif %}
                             {% endif %}
                             <p>Posted by {{message.author}} on {{message.date_posted}}.</p>
                             <div>

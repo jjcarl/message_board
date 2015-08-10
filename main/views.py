@@ -8,12 +8,22 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View
+from django.core import serializers
 
 
 def new(request):
-    return redirect('login')
+    return redirect('home')
 
-# ======== Message Board =========
+
+def home(request):
+    recent = Message.objects.all().order_by('-date_posted')[0:5]
+    pinned = Message.objects.filter(pin=True).order_by('-date_posted')
+    context = {'recent': recent, 'pinned': pinned}
+
+    return render(request, 'home.html', context)
+
+
+# ========== Message Board ===========
 
 
 def message_board(request):
@@ -27,7 +37,7 @@ def message_board(request):
 def short_messages(request):
 
     page = int(request.GET.get('page', 0))
-    page_size = 4
+    page_size = 6
 
     start = page * page_size
     end = (page + 1) * page_size
@@ -39,6 +49,25 @@ def short_messages(request):
     else:
         return HttpResponse('')
 
+
+@login_required
+def create_message(request):
+    messages = Message.objects.all()
+    context = {'messages': messages}
+
+    form = MessageForm(request.POST, request.FILES)
+
+    if request.method == "POST":
+        if form.is_valid:
+            message = form.save()
+            context['message'] = "Your message has been saved"
+        else:
+            context['message'] = form.errors
+
+    return render(request, 'create-message.html', context)
+
+
+# =========== Message Detail =============
 
 class MessageDetail(View):
 
@@ -65,7 +94,7 @@ class MessageDetail(View):
     @method_decorator(login_required)
     def delete(self, request, id):
         Message.objects.get(id=id).delete()
-        return redirect('message_board')
+        return HttpResponse(status=204)
 
     @method_decorator(login_required)
     def post(self, request, id):
@@ -87,6 +116,21 @@ class MessageDetail(View):
 
             return render(request, 'message-detail.html', context)
 
+        elif request.POST['type'] == 'edit':
+            id = request.POST.get('id')
+
+            if id:
+                form = MessageForm(request.POST, request.FILES, instance=message)
+
+            if form.is_valid:
+                message = form.save()
+                context['text'] = "Your message has been saved"
+                context['message'] = message
+            else:
+                context['text'] = form.errors
+
+            return render(request, 'message-detail.html', context)
+
         elif request.POST['type'] == 'favorite':
             user.favorites.add(message)
             return HttpResponse(status=204)
@@ -97,23 +141,6 @@ class MessageDetail(View):
 
 
 @login_required
-def create_message(request):
-    messages = Message.objects.all()
-    context = {'messages': messages}
-
-    form = MessageForm(request.POST, request.FILES)
-
-    if request.method == "POST":
-        if form.is_valid:
-            message = form.save()
-            context['message'] = "Your message has been saved"
-        else:
-            context['message'] = form.errors
-
-    return render(request, 'create-message.html', context)
-
-
-@login_required
 def message_admin(request):
     if request.method == 'GET':
         messages = Message.objects.all().order_by('-date_posted')
@@ -121,6 +148,13 @@ def message_admin(request):
 
         return render(request, 'message-admin.html', context)
 
+
+@login_required
+def message_json(request, id):
+    message = Message.objects.get(id=id)
+    message_json = serializers.serialize('json', [message])
+
+    return HttpResponse(message_json, content_type='application/json')
 
 # ============= AUTHENTICATION ==================
 
