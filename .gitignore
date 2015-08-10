@@ -1,5 +1,4 @@
 *.pyc
 /migrations/
-settings.py
 *.DS_Store
 /media/
