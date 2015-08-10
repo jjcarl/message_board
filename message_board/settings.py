@@ -75,17 +75,6 @@ WSGI_APPLICATION = 'message_board.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jonathoncarlson',
-        'HOST': '127.0.0.1',
-        'USER': '',
-        'PASSWORD': '',
-        'PORT': '5432'
-    }
-}
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -117,8 +106,4 @@ LOGIN_REDIRECT_URL = 'message_board'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'jcarl9000@gmail.com'
-EMAIL_HOST_PASSWORD = 'coding2day'
-EMAIL_USE_TLS = True
+from local_settings import *
