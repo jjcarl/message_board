@@ -65,7 +65,7 @@ hr {
     font-size: .8em;
 }
 
-#message-media-div {
+.message-media-div {
     width: 600px;
     height: auto;
 }
@@ -74,7 +74,8 @@ hr {
     text-align: center;
 }
 
-#message-title-detail {
+.message-title,
+.message-title-detail {
     text-align: center;
 }
 
@@ -97,50 +98,44 @@ hr {
     border-radius: 5px;
 }
 
-#comment-form {
-    display: none;
-}
 
-#message-board-index {
-    font-size: .7em;
-    border: solid #0042FF;
-    border-radius: 10px;
-    margin-left: 10px;
 
-}
-
-#message-board-index img {
-    height: auto;
-    width: auto;
-    max-width: 200px;
-    max-height: 200px;
-
-}
 
 .short-message {
-    overflow: auto;
+    border-bottom: solid #7f7f7f;
+    border-width: 2px;
 }
 
-.pinned-content {
-
-}
-
-#edit-message-form {
-    display: none;
-}
 
 .carousel-inner>.item>a>img, 
 .carousel-inner>.item>img, 
 .img-responsive, 
 .thumbnail a>img, 
 .thumbnail>img {
-    height: 800px;
-    width: auto;
+    height: auto;
+    width: 100%;
     margin: auto;
 }
 
-.carousel-inner>.item>a>img, 
-.carousel-inner>.item>img, 
-.img-responsive, 
-.thumbnail a>img, 
-.thumbnail>img
+#comment-form,
+#edit-message-form,
+#media-link,
+#quote-reference,
+#edit-media-link,
+#edit-quote-reference {
+    display: none;
+}
+
+.quote-text {
+    font-family: fantasy, cursive;
+    font-style: oblique;
+}
+
+.message-reference {
+    text-align: right;
+    font-family: fantasy, cursive;
+}
+
+.help-block {
+    font-size: .7em;
+}

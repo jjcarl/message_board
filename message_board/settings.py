@@ -75,6 +75,7 @@ WSGI_APPLICATION = 'message_board.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# See the local_settings.py file
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

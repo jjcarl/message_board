@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0005_message_file_type'),
+        ('main', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='message',
-            name='file_type',
-            field=models.CharField(blank=True, max_length=3, null=True, choices=[(b'IMG', b'Image'), (b'VID', b'Video'), (b'AUD', b'Audio')]),
+            name='link',
+            field=models.URLField(max_length=255, null=True, blank=True),
         ),
     ]

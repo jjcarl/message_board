@@ -9,6 +9,17 @@
                     <input type="hidden" name="author" value="{{user.id}}">
                     <input type="hidden" name="id" value="">
                     <div class="form-group">
+                        <label for="post-type">Post Type</label>
+                        <br>
+                        <select name="post_type" id="post-type-selector">
+                            <option value="PST" name="POST">Post</option>
+                            <option value="QTE" name="QUOTE">Quote</option>
+                            <option value="VID" name="VIDEO">Video</option>
+                            <option value="AUD" name="AUDIO">Audio</option>
+                        </select>
+                        <p class="text-danger help-block">Please select what type of post you will make.</p>
+                    </div>
+                    <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="title-input">Title</label>
@@ -17,30 +28,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="create-message-content">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="message-input">Message</label>
+                                <label for="message-input">Content</label>
                                 <textarea class="form-control" name="text" placeholder="Your message content" id="message-text-box"></textarea>              
-                                <p class="help-block">Type your message text in here</p>
+                                <p class="help-block">Type your content in here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="quote-reference">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Quote Reference</label>
+                                <input type="text" name="reference" class="form-control" placeholder="Reference">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="media-link">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Media Link</label>
+                                <input type="text" name="link" class="form-control" placeholder="Enter the URL to your media here">
+                                <p class="help-block">Only post the source link from the media player - (.... src="https://www.youtube.com/embed/FZNqs0YgWkM" ....)</p>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="file-input"><i class="glyphicon glyphicon-floppy-disk"></i>Load a file</label>
+                        <label for="file-input"><i class="glyphicon glyphicon-floppy-disk"></i>Attach an image</label>
                         <input type="file" name="media">
                         <img id="media-upload-on-form" src="">
-                    </div>
-                    <div class="form-group">
-                        <label for="file-type">Media Type</label>
-                        <br>
-                        <select name="file_type" id="file-type-selector">
-                            <option value="">Select</option>
-                            <option value="IMG" name="IMAGE">Image</option>
-                            <option value="VID" name="VIDEO">Video</option>
-                            <option value="AUD" name="AUDIO">Audio</option>
-                        </select>
-                    <p class="text-danger help-block">You must select a media type when uploading a file.</p>
                     </div>
                     <button id="create-message-button" class="btn btn-default" type="submit">Submit</button>
                 </form>

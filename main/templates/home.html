@@ -14,14 +14,21 @@
       <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-              <img src="http://api.ning.com/files/ZfkZcSjsSG7lwNFgAJ10ifVEaDxAmSw81M8IuYoD*aVFS9nyY0HLhw1uRh915Vfa*D8def6vtpJNfygg0D-LtBZ0M8M7sxa7/YIRBeach.jpg" alt="...">
+              <img src="{% static 'img/lights.jpg' %}" alt="...">
               <div class="carousel-caption">
-                <h3>A default picture</h3>
+                <h3>Welcome to the message board</h3>
               </div>
             </div>
             {% for message in pinned %}
                 <div class="item">
-                  <img src="{{message.media.url}}" alt="..." class="carousel-image">
+                {% if message.media %}
+                    <img src="{{message.media.url}}" alt="..." class="carousel-image">
+                {% elif message.post_type == 'VID' %}
+                    <img src="{% static "img/bluenight.jpg" %}" alt="" class="carousel-image">
+                {% else %}
+                    <img src="{% static "img/empty.jpg" %}" alt="" class="carousel-image">
+                {% endif %}
+                  
                   <div class="carousel-caption">
                     <h3>{{message.title}}</h3>
                     <p>{{message.text | truncatewords:'20'}}</p>
@@ -46,18 +53,22 @@
             <div class="col-sm-12" id="recent-messages">
                 {% for message in recent %}
                     <div class="row">
-                        <div class="col-sm-offset-3 col-sm-9">
+                        <div class="col-sm-offset-2 col-sm-6">
                             <a href="{% url 'message_detail' id=message.id %}">
                                 <h3 class="message-title">{{message.title}}</h3>
-                                <p class="message-text">{{message.text | truncatewords:'10'}}</p>
                                 {% if message.media %}
-                                    {% if message.file_type == 'IMG' %}
-                                        <img id="message-media-div" src="{{message.media.url}}" width="200" height="auto">
-                                    {% elif message.file_type == 'VID' %}
-                                        <video src="{{message.media.url}}" width="200" height="auto" controls></video>
-                                    {% elif message.file_type == 'AUD' %}
-                                        <audio src="{{message.media.url}}" controls></audio>
-                                    {% endif %}
+                                    <img src="{{message.media.url}}" width="600" height="auto">
+                                {% endif %}
+                                {% if message.post_type == 'VID' %}
+                                    <iframe width="560" height="315" src="{{message.link}}" frameborder="0" allowfullscreen></iframe>
+                                {% elif message.post_type == 'AUD' %}
+                                    <iframe width="560" height="315" scrolling="no" frameborder="no" src="{{message.link}}"></iframe>
+                                {% endif %}
+                                {% if message.post_type == 'QTE' %}
+                                    <p class="message-text quote-text">"{{message.text | truncatewords:'15'}}"</p>
+                                    <p class="message-reference">{{message.reference}}</p>
+                                {% else %}
+                                    <p class="message-text">{{message.text | truncatewords:'15'}}</p>
                                 {% endif %}
                             </a>
                             <br>

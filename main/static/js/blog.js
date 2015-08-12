@@ -1,3 +1,33 @@
+// ===== Show Navbar when scrolling up ======
+jQuery(document).ready(function($) {
+    var MQL = 1170;
+
+    //primary navigation slide-in effect
+    if ($(window).width() > MQL) {
+        var headerHeight = $('.navbar-custom').height();
+        $(window).on('scroll', {
+                previousTop: 0
+            },
+            function() {
+                var currentTop = $(window).scrollTop();
+                //check if user is scrolling up
+                if (currentTop < this.previousTop) {
+                    //if scrolling up...
+                    if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
+                        $('.navbar-custom').addClass('is-visible');
+                    } else {
+                        $('.navbar-custom').removeClass('is-visible is-fixed');
+                    }
+                } else {
+                    //if scrolling down...
+                    $('.navbar-custom').removeClass('is-visible');
+                    if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
+                }
+                this.previousTop = currentTop;
+            });
+    }
+});
+
 
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -118,14 +148,14 @@ $('#edit-message-btn').click(function(e){
         var id = data[0].pk
         var author = data[0].fields.author
         var media = data[0].fields.media
-        var file_type = data[0].fields.file_type
+        var post_type = data[0].fields.post_type
 
         $('#edit-message-form input[name="author"]').val(author);
         $('#edit-message-form input[name="title"]').val(title);
         $('#edit-message-form textarea[name="text"]').val(text);
         $('#edit-message-form input[name="id"]').val(id);
         if (media.length > 0){
-            $('#edit-message-form select[name="file_type"]').val(file_type);
+            $('#edit-message-form select[name="post_type"]').val(post_type);
         }
     });
 })
@@ -145,38 +175,46 @@ function clearForm(){
 }
 
 
-
-// $('#submit-message-comment').click(function(e){
-//     e.preventDefault();
-//     $('#comment-form').hide();
-// });
-
-// Navigation Scripts to Show Header on Scroll-Up
-jQuery(document).ready(function($) {
-    var MQL = 1170;
-
-    //primary navigation slide-in effect
-    if ($(window).width() > MQL) {
-        var headerHeight = $('.navbar-custom').height();
-        $(window).on('scroll', {
-                previousTop: 0
-            },
-            function() {
-                var currentTop = $(window).scrollTop();
-                //check if user is scrolling up
-                if (currentTop < this.previousTop) {
-                    //if scrolling up...
-                    if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
-                        $('.navbar-custom').addClass('is-visible');
-                    } else {
-                        $('.navbar-custom').removeClass('is-visible is-fixed');
-                    }
-                } else {
-                    //if scrolling down...
-                    $('.navbar-custom').removeClass('is-visible');
-                    if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
-                }
-                this.previousTop = currentTop;
-            });
+$('#create-message-form select[name="post_type"]').change(function(){
+    switch ($(this).val()){
+        case 'QTE':
+            $('#quote-reference').show();
+            $('#media-link').hide();
+            break;
+        case 'VID':
+            $('#media-link').show();
+            $('#quote-reference').hide();
+            break;
+        case 'AUD':
+            $('#media-link').show();
+            $('#quote-reference').hide();
+            break;
+        case 'PST':
+            $('#media-link').hide();
+            $('#quote-reference').hide();
+            break;
     }
 });
+
+$('#create-message-form select[name="post_type"]').change(function(){
+    switch ($(this).val()){
+        case 'QTE':
+            $('#edit-quote-reference').show();
+            $('#edit-media-link').hide();
+            break;
+        case 'VID':
+            $('#edit-media-link').show();
+            $('#edit-quote-reference').hide();
+            break;
+        case 'AUD':
+            $('#edit-media-link').show();
+            $('#edit-quote-reference').hide();
+            break;
+        case 'PST':
+            $('#edit-media-link').hide();
+            $('#edit-quote-reference').hide();
+            break;
+    }
+});
+
+
