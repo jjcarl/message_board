@@ -13,13 +13,15 @@
     
         <article>
             <div class="row">
-                <div id="message-text-detail" class="col-md-offset-3 col-md-6">
+                <div id="message-text-detail" class="col-md-12">
                     <p>
                         {% if message.media %}
-                            <img class="message-media-div" src="{{message.media.url}}" width="100%" height="auto">
+                            <img src="{{message.media.url}}" width="100%" height="auto">
                         {% endif %}
-                        {% if message.post_type == 'VID' %}
-                            <iframe width="560" height="315" src="{{message.link}}" frameborder="0" allowfullscreen></iframe>
+                        {% if message.post_type == 'YTB' %}
+                            <iframe width="853" height="480" src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                        {% elif message.post_type == 'VMO' %}
+                            <iframe width="853" height="480" src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         {% elif message.post_type == 'AUD' %}
                             <iframe width="560" height="315" scrolling="no" frameborder="no" src="{{message.link}}"></iframe>
                         {% endif %}
@@ -88,11 +90,12 @@
             <div class="form-group">
                 <label for="post-type">Media Type</label>
                 <br>
-                <select name="post_type" id="post-type-selector">
+                <select name="post_type" id="edit-post-type-selector">
                     <option value="PST" name="POST">Post</option>
                     <option value="QTE" name="QUOTE">Quote</option>
-                    <option value="VID" name="VIDEO">Video</option>
-                    <option value="AUD" name="AUDIO">Audio</option>
+                    <option value="YTB" name="YOUTUBE">Youtube</option>
+                    <option value="VMO" name="VIMEO">Vimeo</option>
+                    <option value="AUD" name="AUDIO">Soundcloud</option>
                 </select>
                 <p class="text-danger help-block">Please select what type of post you will make.</p>
             </div>
@@ -131,15 +134,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="file-input"><i class="glyphicon glyphicon-floppy-disk"></i>Atatch an image</label>
+                <label for="file-input"><i class="glyphicon glyphicon-floppy-disk"></i>Attach an image</label>
                 <input type="file" name="media">
-                {% if message.file_type == 'IMG' %}
-                    <img id="message-media-div" src="{{message.media.url}}">
-                {% elif message.file_type == 'VID' %}
-                    <video src="{{message.media.url}}" width="600" height="auto" controls></video>
-                {% elif message.file_type == 'AUD' %}
-                    <audio src="{{message.media.url}}" controls></audio>
-                {% else %}<p></p>
+                {% if message.post_type == 'IMG' %}
+                    <img src="{{message.media.url}}">
                 {% endif %}
            </div>
             <button id="edit-message-button" class="btn btn-default" type="submit">Submit</button>

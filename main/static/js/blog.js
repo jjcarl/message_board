@@ -1,6 +1,6 @@
 // ===== Show Navbar when scrolling up ======
 jQuery(document).ready(function($) {
-    var MQL = 1170;
+    var MQL = 400;
 
     //primary navigation slide-in effect
     if ($(window).width() > MQL) {
@@ -142,20 +142,42 @@ $('#edit-message-btn').click(function(e){
     var id = $(this).parent().attr('data-post-id');
 
     $.get('/message/message-detail/' + id + '/json/', function(data){
-
+        console.log(data);
         var text = data[0].fields.text
         var title = data[0].fields.title
         var id = data[0].pk
         var author = data[0].fields.author
         var media = data[0].fields.media
         var post_type = data[0].fields.post_type
+        var link = data[0].fields.link
 
         $('#edit-message-form input[name="author"]').val(author);
         $('#edit-message-form input[name="title"]').val(title);
         $('#edit-message-form textarea[name="text"]').val(text);
         $('#edit-message-form input[name="id"]').val(id);
-        if (media.length > 0){
-            $('#edit-message-form select[name="post_type"]').val(post_type);
+        $('#edit-message-form select[name="post_type"]').val(post_type);
+        $('#edit-message-form input[name="link"]').val(link);
+        switch ($('#edit-message-form select[name="post_type"]').val()){
+            case 'QTE':
+                $('#edit-quote-reference').show();
+                $('#edit-media-link').hide();
+                break;
+            case 'YTB':
+                $('#edit-media-link').show();
+                $('#edit-quote-reference').hide();
+                break;
+            case 'VMO':
+                $('#edit-media-link').show();
+                $('#edit-quote-reference').hide();
+                break;
+            case 'AUD':
+                $('#edit-media-link').show();
+                $('#edit-quote-reference').hide();
+                break;
+            case 'PST':
+                $('#edit-media-link').hide();
+                $('#edit-quote-reference').hide();
+                break;
         }
     });
 })
@@ -171,6 +193,8 @@ function clearForm(){
     $('#edit-message-form textarea[name="text"]').val('');
     $('#edit-message-form input[name="id"]').val('');
     $('#edit-message-form input[name="media"]').val('');
+    $('#edit-message-form input[name="link"]').val('');
+    $('#edit-message-form select[name="post_type"]').val('');
     $('#edit-message-form').hide();
 }
 
@@ -181,7 +205,11 @@ $('#create-message-form select[name="post_type"]').change(function(){
             $('#quote-reference').show();
             $('#media-link').hide();
             break;
-        case 'VID':
+        case 'YTB':
+            $('#media-link').show();
+            $('#quote-reference').hide();
+            break;
+        case 'VMO':
             $('#media-link').show();
             $('#quote-reference').hide();
             break;
@@ -196,13 +224,17 @@ $('#create-message-form select[name="post_type"]').change(function(){
     }
 });
 
-$('#create-message-form select[name="post_type"]').change(function(){
+$('#edit-message-form select[name="post_type"]').change(function(){
     switch ($(this).val()){
         case 'QTE':
             $('#edit-quote-reference').show();
             $('#edit-media-link').hide();
             break;
-        case 'VID':
+        case 'YTB':
+            $('#edit-media-link').show();
+            $('#edit-quote-reference').hide();
+            break;
+        case 'VMO':
             $('#edit-media-link').show();
             $('#edit-quote-reference').hide();
             break;
@@ -217,4 +249,7 @@ $('#create-message-form select[name="post_type"]').change(function(){
     }
 });
 
-
+$('.navbar-right').on('click', '#sidebar-toggle', function(e){
+    e.preventDefault();
+    $('#right-nav-bar').show();
+})

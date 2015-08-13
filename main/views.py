@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from main.models import Message, Comment
+from main.models import Message, Comment, Tag
 from main.forms import MessageForm, CommentForm
 from django.contrib.auth import views, authenticate, login
 from django.contrib.auth.models import User, Group
@@ -53,10 +53,10 @@ def short_messages(request):
 @login_required
 def create_message(request):
     messages = Message.objects.all()
-    context = {'messages': messages}
+    tags = Tag.objects.all()
+    context = {'messages': messages, 'tags': tags}
 
     form = MessageForm(request.POST, request.FILES)
-
     if request.method == "POST":
         if form.is_valid:
             message = form.save()
@@ -75,7 +75,8 @@ class MessageDetail(View):
         context = {}
         message = Message.objects.get(id=id)
         context["message"] = message
-        comments = Comment.objects.filter(message=message).order_by('-date_posted')
+        comments = Comment.objects.filter(
+            message=message).order_by('-date_posted')
         context['comments'] = comments
         return render(request, 'message-detail.html', context)
 
@@ -103,7 +104,8 @@ class MessageDetail(View):
         user = request.user
 
         if request.POST['type'] == 'comment':
-            comments = Comment.objects.filter(message=message).order_by('-date_posted')
+            comments = Comment.objects.filter(
+                message=message).order_by('-date_posted')
             context = {'comments': comments}
             form = CommentForm(request.POST)
 
@@ -120,7 +122,8 @@ class MessageDetail(View):
             id = request.POST.get('id')
 
             if id:
-                form = MessageForm(request.POST, request.FILES, instance=message)
+                form = MessageForm(
+                    request.POST, request.FILES, instance=message)
 
             if form.is_valid:
                 message = form.save()
@@ -183,4 +186,3 @@ def create_account(request):
         context['error_on_create'] = True
 
     return render(request, 'create-account.html', context)
-

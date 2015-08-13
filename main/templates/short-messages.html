@@ -1,25 +1,29 @@
 {% for message in messages %}
-    <div class="row">
-        <div class="col-sm-offset-2 col-sm-8 short-message">
-            <a href="{% url 'message_detail' id=message.id %}">
-                <h3 class="message-title">{{message.title}}</h3>
-                {% if message.media %}
-                    <img src="{{message.media.url}}" width="100%" height="auto">
-                {% endif %}
-                {% if message.post_type == 'VID' %}
-                    <iframe width="560" height="315" src="{{message.link}}" frameborder="0" allowfullscreen></iframe>
-                {% elif message.post_type == 'AUD' %}
-                    <iframe width="560" height="315" scrolling="no" frameborder="no" src="{{message.link}}"></iframe>
-                {% endif %}
-                {% if message.post_type == 'QTE' %}
-                    <p class="message-text quote-text">{{message.text}}</p>
-                    <p class="message-reference">{{message.reference}}</p>
-                {% else %}
-                    <p class="message-text">{{message.text}}</p>
-                {% endif %}
-            </a>
-            <br>
-            <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-10 short-message">
+                <a href="{% url 'message_detail' id=message.id %}">
+                    <h3 class="message-title">{{message.title}}</h3>
+                    {% if message.media %}
+                        <img src="{{message.media.url}}" width="100%" height="auto">
+                    {% endif %}
+                    {% if message.post_type == 'YTB' %}
+                        <iframe width="960" height="540" src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    {% elif message.post_type == 'VMO' %}
+                        <iframe width="960" height="540" src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    {% elif message.post_type == 'AUD' %}
+                        <iframe width="960" height="540" scrolling="yes" frameborder="no" src="{{message.link}}"></iframe>
+                    {% endif %}
+                    {% if message.post_type == 'QTE' %}
+                        <p class="message-text quote-text">{{message.text}}</p>
+                        <p class="message-reference">{{message.reference}}</p>
+                    {% else %}
+                        <p class="message-text">{{message.text}}</p>
+                    {% endif %}
+                </a>
+                <br>
+                <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+            </div>
         </div>
     </div>
 {% endfor %}

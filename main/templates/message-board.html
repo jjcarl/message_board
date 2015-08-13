@@ -7,19 +7,19 @@
     <div class="message-board-header">
         <h1 class="page-title">Welcome to the message board!</h1>
     </div>
+</div>
     <div class="row">
         <!-- =====The Index of all messages ===== -->
         <div class="col-sm-12" id="message-board-index">
-        <h2><center>Index</center></h2>
-        <hr>
             <div class="row">
                 <div class="col-sm-12" id="message-list">
                 </div>
             </div>
-            <div id="load-more-messages"><center><img src="{% static 'img/ripple.gif' %}"></center></div>
+            <div id="load-more-messages">
+                <center><img src="{% static 'img/ripple.gif' %}"></center>
+            </div>
         </div>
     </div>
-</div>
 {% endblock content %}
 {% block js %}
     <script src="{% static 'js/message-board.js' %}"></script>

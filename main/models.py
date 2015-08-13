@@ -8,19 +8,23 @@ class Message(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User)
     media = models.ImageField(upload_to='%Y/%m/%d', null=True, blank=True)
-    favorite = models.ManyToManyField(User,
-                                      related_name='favorites', blank=True)
+    favorite = models.ManyToManyField(
+        User, related_name='favorites', blank=True)
     pin = models.BooleanField(default=False)
     link = models.URLField(max_length=255, null=True, blank=True)
     reference = models.CharField(max_length=100, null=True, blank=True)
+    tag = models.ManyToManyField(
+        'Tag', blank=True, related_name='messages')
     QUOTE = 'QTE'
     POST = 'PST'
-    VIDEO = 'VID'
+    YOUTUBE = 'YTB'
+    VIMEO = 'VMO'
     AUDIO = 'AUD'
     POST_TYPE_CHOICES = (
         (QUOTE, 'Quote'),
         (POST, 'Post'),
-        (VIDEO, 'Video'),
+        (YOUTUBE, 'Youtube'),
+        (VIMEO, 'Vimeo'),
         (AUDIO, 'Audio'),)
     post_type = models.CharField(max_length=3,
                                  choices=POST_TYPE_CHOICES,
@@ -45,7 +49,6 @@ class Comment(models.Model):
 
 class Tag(models.Model):
     word = models.CharField(max_length=50, unique=True)
-    message = models.ForeignKey('Message')
 
     def __unicode__(self):
         return self.word
