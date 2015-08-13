@@ -5,6 +5,10 @@
     background-color: #2F2E5F;
 }
 
+.navbar .navbar-default .navbar-custom .navbar-fixed-top .is-fixed .is-visible {
+    position: fixed;
+}
+
 .navbar-custom .nav>li>a,
 .navbar-custom .nav>li>a:hover, 
 .navbar-custom .nav>li>a:focus {
@@ -138,14 +142,33 @@ hr {
     font-size: .7em;
 }
 
-#right-nav-bar {
+#right-side-navbar {
     display: none;
+    border: none;
+    color: #FFF;
+}
+
+#right-side-navbar a {
+    color: #FFF;
+}
+
+#right-side-navbar-box {
     background-color: #2F2E5F;
     border: none;
     color: #FFF;
     width: 300px;
 }
 
-#right-nav-bar a {
-    color: #FFF;
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

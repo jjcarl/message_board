@@ -19,9 +19,13 @@
                             <img src="{{message.media.url}}" width="100%" height="auto">
                         {% endif %}
                         {% if message.post_type == 'YTB' %}
-                            <iframe width="853" height="480" src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                            <div class="video-wrapper">
+                              <iframe src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
                         {% elif message.post_type == 'VMO' %}
-                            <iframe width="853" height="480" src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                          <div class="video-wrapper">
+                              <iframe src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                          </div>
                         {% elif message.post_type == 'AUD' %}
                             <iframe width="560" height="315" scrolling="no" frameborder="no" src="{{message.link}}"></iframe>
                         {% endif %}

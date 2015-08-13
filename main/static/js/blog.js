@@ -251,5 +251,5 @@ $('#edit-message-form select[name="post_type"]').change(function(){
 
 $('.navbar-right').on('click', '#sidebar-toggle', function(e){
     e.preventDefault();
-    $('#right-nav-bar').show();
+    $('#right-side-navbar').show();
 })
