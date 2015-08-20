@@ -6,7 +6,7 @@ from main.views import MessageDetail
 
 urlpatterns = [
     url(r'^$', 'main.views.new', name='new'),
-    url(r'^home/$', 'main.views.home', name='home'),
+    url(r'^mbhome/$', 'main.views.mbhome', name='mbhome'),
     url(r'^create-message/$',
         'main.views.create_message', name='create_message'),
     url(r'^message-board/$', 'main.views.message_board', name='message_board'),

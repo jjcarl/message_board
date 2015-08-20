@@ -12,18 +12,23 @@ from django.core import serializers
 
 
 def new(request):
-    return redirect('home')
+    return redirect('mbhome')
 
 
 def home(request):
-    recent = Message.objects.all().order_by('-date_posted')[0:5]
-    pinned = Message.objects.filter(pin=True).order_by('-date_posted')
-    context = {'recent': recent, 'pinned': pinned}
-
+    context = {}
     return render(request, 'home.html', context)
 
 
 # ========== Message Board ===========
+
+
+def mbhome(request):
+    recent = Message.objects.all().order_by('-date_posted')[0:5]
+    pinned = Message.objects.filter(pin=True).order_by('-date_posted')
+    context = {'recent': recent, 'pinned': pinned}
+
+    return render(request, 'mbhome.html', context)
 
 
 def message_board(request):

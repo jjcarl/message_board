@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      {% for i in pinned %}
+        <li data-target="#carousel-example-generic" data-slide-to="{{i}}"></li>
+      {% endfor %}
+        
+      </ol>
+
+      <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="{% static 'img/lights.jpg' %}" alt="...">
+              <div class="carousel-caption">
+                <h3>Welcome to the message board</h3>
+              </div>
+            </div>
+            {% for message in pinned %}
+              <div class="item">
+                <a href="{% url 'message_detail' id=message.id %}">
+                  {% if message.media %}
+                    <img src="{{message.media.url}}?rel=0&amp;showinfo=0" alt="..." class="carousel-image">
+                  {% elif message.post_type == 'YTB' %}
+                      <iframe width="1450" height="816" src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  {% elif message.post_type == 'VMO' %}
+                      <iframe width="1450" height="816" src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                  {% else %}
+                      <img src="{% static "img/empty.jpg" %}" alt="" class="carousel-image">
+                  {% endif %}
+                  
+                  <div class="carousel-caption">
+                    <h3>{{message.title}}</h3>
+                    <p>{{message.text | truncatewords:'20'}}</p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+        </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+{% for message in recent %}
+<div class="row">
+  <div class="container col-sm-offset-2 col-sm-8">
+      <div class="row">
+          <div class="col-sm-12">
+              <a href="{% url 'message_detail' id=message.id %}">
+                  <h3 class="message-title">{{message.title}}</h3>
+                  {% if message.media %}
+                      <img src="{{message.media.url}}" width="100%" height="auto">
+                  {% endif %}
+                  {% if message.post_type == 'YTB' %}
+                    <div class="video-wrapper">
+                      <iframe src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                  {% elif message.post_type == 'VMO' %}
+                  <div class="video-wrapper">
+                      <iframe src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                  </div>
+                  {% elif message.post_type == 'AUD' %}
+                      <iframe width="100%" height="auto" scrolling="no" frameborder="no" src="{{message.link}}"></iframe>
+                  {% endif %}
+                  {% if message.post_type == 'QTE' %}
+                      <p class="message-text quote-text">"{{message.text | truncatewords:'15'}}"</p>
+                      <p class="message-reference">{{message.reference}}</p>
+                  {% else %}
+                      <p class="message-text">{{message.text | truncatewords:'15'}}</p>
+                  {% endif %}
+              </a>
+              <br>
+              <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+{% endblock content %}
