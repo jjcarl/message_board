@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from main.models import Message, Comment, Tag
 from main.forms import MessageForm, CommentForm
 from django.contrib.auth import views, authenticate, login
@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View
 from django.core import serializers
+from django.template import RequestContext
 
 
 def new(request):
@@ -73,6 +74,7 @@ def create_message(request):
 
 
 # =========== Message Detail =============
+
 
 class MessageDetail(View):
 
@@ -163,6 +165,34 @@ def message_json(request, id):
     message_json = serializers.serialize('json', [message])
 
     return HttpResponse(message_json, content_type='application/json')
+
+
+# ============ SEARCH ===============
+
+def message_search(request):
+    request_context = RequestContext(request)
+    context = {}
+    messages = Message.objects.all()
+
+    if request.method == 'POST':
+        form = request.POST
+        context['form'] = form
+
+        word = form['word']
+
+        context['message_titles'] = messages.filter(title__icontains=word)
+        context['message_texts'] = messages.filter(text__icontains=word)
+
+        context['valid'] = "Form is Valid"
+
+        return render_to_response("message_search.html", context, context_instance=request_context)
+
+    else:
+        form = request.POST
+        context['form'] = form
+
+        return render_to_response("message_search.html", context, context_instance=request_context)
+
 
 # ============= AUTHENTICATION ==================
 

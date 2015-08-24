@@ -185,3 +185,13 @@ hr {
     font-size: 4em;
     font-family: futura, didot, georgia, helvetica;
 }
+
+.dropdown-menu {
+    width: 15em;
+}
+
+.search-btn {
+    color: #020202;
+    border-radius: 5px;
+    background-color: #aaa;
+}

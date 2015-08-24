@@ -28,12 +28,14 @@ jQuery(document).ready(function($) {
     }
 });
 
-
+// ========== CSRF cookie function =======
 function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
   if (parts.length == 2) return parts.pop().split(";").shift();
 }
+
+// ======== Pin a message to the front page ========
 
 $('#pin-btn').click(function(e){
     e.preventDefault();
@@ -53,6 +55,8 @@ $('#pin-btn').click(function(e){
     })
 })
 
+
+// =============== Favorite, unfavorite a message ==============
 
 $('#favorite-btn').click(function(e){
     e.preventDefault();
@@ -90,6 +94,8 @@ $('#unfavorite-btn').click(function(e){
     })
 })
 
+
+// =========== Delete a message ======
 
 $('.all-messages').on('click', '.one-message', function(e){
     e.preventDefault();
@@ -129,12 +135,31 @@ $('#delete-message').click(function(e){
     
 });
 
+// ========= Search Function =========
+
+// $('#search-form').on('click', '#search-btn', function(){
+//     var word = $(this).parent().val();
+//     $.ajax({
+//         url: '/message/message-search/',
+//         method: 'GET',
+//         word: word,
+//         beforeSend: function(xhr){
+//                 xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"))
+//             },
+//             success: function(){
+                
+//             }
+//     })
+// })
+
+// ======== Show the form to comment on a mesasge ======
+
 $('#create-message-comment').click(function(e){
     e.preventDefault();
     $('#comment-form').show();
 });
 
-// ============== Edit Message ===========
+// ============== Edit Message functions ===========
 
 $('#edit-message-btn').click(function(e){
     e.preventDefault();

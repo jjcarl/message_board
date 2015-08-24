@@ -10,19 +10,10 @@
       </button>
       <a class="navbar-brand" href="{% url 'home' %}">JC2DEV</a>
     </div>
-    <div>
-
-    </div>
-
-    
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'mbhome' %}">Message Board</a></li>
-        {% if user.is_authenticated %}
-        {% if user.is_superuser %}
-          <li><a href="{% url 'message_admin' %}">Message Admin Page</a></li>
-        {% endif %}
-        
+        {% if user.is_authenticated %}        
         <li><a href="{% url 'create_message' %}">Create a message</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Welcome {{user.username}} <span class="caret"></span></a>
@@ -33,15 +24,26 @@
         {% else %}
         <li><a href="{% url 'login' %}">Login</a></li>
         {% endif %}
-        <li><a href="#"><i class="glyphicon glyphicon-menu-hamburger" id="sidebar-toggle"></i></a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="row" id="right-side-navbar">
-    <div class="col-sm-offset-10 col-sm-2" id="right-side-navbar-box">
-      <ul>
-        <li><a href="{% url 'message_board' %}">All messages</a></li>
-      </ul>
-    </div>
+        {% if user.is_authenticated %}
+          <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Options<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'message_board' %}">All messages</a></li>
+                <li role="separator" class="divider"></li>
+                <form class="navbar-form navbar-left" id="search-form" method="post" role="search" action="{% url 'message_search' %}">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" name="word">
+                  </div>
+                  <button type="submit" class="search-btn" name="search-btn">Search</button>
+                </form>
+                {% endif %}
+                {% if user.is_superuser %}
+                  <li><a href="{% url 'message_admin' %}">Message Admin Page</a></li>
+                {% endif %}
+              </ul>
+            </li>
+        </ul>
+      </div>
   </div>
 </nav>

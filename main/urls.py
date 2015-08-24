@@ -42,5 +42,6 @@ urlpatterns = [
         views.password_reset_complete,
         {'template_name': 'password_reset/password-reset-complete.html'},
         name="password_reset_complete"),
+    url(r'^message_search/$', 'main.views.message_search', name='message_search')
 
 ]

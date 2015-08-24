@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        {% for message in message_titles %}
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10 short-message">
+                    <a href="{% url 'message_detail' id=message.id %}">
+                        <h3 class="message-title">{{message.title}}</h3>
+                        {% if message.media %}
+                            <img src="{{message.media.url}}" width="100%" height="auto">
+                        {% endif %}
+                        {% if message.post_type == 'YTB' %}
+                            <div class="video-wrapper">
+                              <iframe src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {% elif message.post_type == 'VMO' %}
+                              <div class="video-wrapper">
+                                  <iframe src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                              </div>
+                        {% elif message.post_type == 'AUD' %}
+                            <iframe width="960" height="540" scrolling="yes" frameborder="no" src="{{message.link}}"></iframe>
+                        {% endif %}
+                        {% if message.post_type == 'QTE' %}
+                            <p class="message-text quote-text">{{message.text}}</p>
+                            <p class="message-reference">{{message.reference}}</p>
+                        {% else %}
+                            <p class="message-text">{{message.text}}</p>
+                        {% endif %}
+                    </a>
+                    <br>
+                    <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+                </div>
+            </div>
+        {% endfor %}
+        {% for message in message_texts %}
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10 short-message">
+                    <a href="{% url 'message_detail' id=message.id %}">
+                        <h3 class="message-title">{{message.title}}</h3>
+                        {% if message.media %}
+                            <img src="{{message.media.url}}" width="100%" height="auto">
+                        {% endif %}
+                        {% if message.post_type == 'YTB' %}
+                            <div class="video-wrapper">
+                              <iframe src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {% elif message.post_type == 'VMO' %}
+                              <div class="video-wrapper">
+                                  <iframe src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                              </div>
+                        {% elif message.post_type == 'AUD' %}
+                            <iframe width="960" height="540" scrolling="yes" frameborder="no" src="{{message.link}}"></iframe>
+                        {% endif %}
+                        {% if message.post_type == 'QTE' %}
+                            <p class="message-text quote-text">{{message.text}}</p>
+                            <p class="message-reference">{{message.reference}}</p>
+                        {% else %}
+                            <p class="message-text">{{message.text}}</p>
+                        {% endif %}
+                    </a>
+                    <br>
+                    <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %} 
