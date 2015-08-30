@@ -1,6 +1,6 @@
 *.pyc
-/migrations/
+migrations/
 *.DS_Store
-/media/
+media/
 local_settings.py
 

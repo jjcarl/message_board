@@ -42,9 +42,20 @@
        </article>
         <div class="row">
             <div class="col-md-offset-3 col-md-6">        
-                <span id="message-meta-detail" class="message-meta"> Posted by {{message.author}} on {{message.date_posted}}</span>
+                <span id="message-meta-detail" class="message-meta"> Posted by {{message.author}} {{message.date_posted|timesince}} ago.</span>
             </div>
         </div>
+        {% if message.tag.count > 0 %}
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">        
+                <span class="tags"> Tags: 
+                {% for tag in message.tag.all %}
+                    '{{tag}}' 
+                {% endfor %}
+                </span>
+            </div>
+        </div>
+        {% endif %}
         <div class="row" id="message-id-row">       
             <div class="col-md-offset-3" data-post-id="{{message.id}}">
                 {% if message in user.favorites.all %}
@@ -154,7 +165,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-6">
                         <p>{{comment.content}}</p>
-                        <p>Posted by {{comment.user}} on {{comment.date_posted}}.</p>  
+                        <p>Posted by {{comment.user}} {{comment.date_posted|timesince}} ago.</p>  
                         <hr>
                     </div>
                 </div>
