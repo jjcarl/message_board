@@ -6,12 +6,12 @@
             <div class="col-sm-offset-1 col-sm-10">
                 <form class="col-sm-offset-2 col-sm-12" enctype="multipart/form-data" id="create-message-form" action="{% url 'create_message' %}" method="POST">
                     {% csrf_token %}
-                    <input type="hidden" name="author" value="{{user.id}}">
-                    <input type="hidden" name="id" value="">
+                    <input type="hidden" name="message-author" value="{{user.id}}">
+                    <input type="hidden" name="message-id" value="">
                     <div class="form-group">
                         <label for="post-type">Post Type</label>
                         <br>
-                        <select name="post_type" id="post-type-selector">
+                        <select name="message-post_type" id="post-type-selector">
                             <option value="PST" name="POST">Post</option>
                             <option value="QTE" name="QUOTE">Quote</option>
                             <option value="YTB" name="YOUTUBE">Youtube</option>
@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="title-input">Title</label>
-                                <input type="text" class="form-control" name="title" placeholder="Title">
+                                <input type="text" class="form-control" name="message-title" placeholder="Title">
                                 <p class="help-block">Type your message title in here.</p>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="message-input">Content</label>
-                                <textarea class="form-control" name="text" placeholder="Your message content" id="message-text-box"></textarea>              
+                                <textarea class="form-control" name="message-text" placeholder="Your message content" id="message-text-box"></textarea>              
                                 <p class="help-block">Type your content in here</p>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Quote Reference</label>
-                                <input type="text" name="reference" class="form-control" placeholder="Reference">
+                                <input type="text" name="message-reference" class="form-control" placeholder="Reference">
                             </div>
                         </div>
                     </div>
@@ -50,25 +50,24 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Media Link</label>
-                                <input type="text" name="link" class="form-control" placeholder="Enter the URL to your media here">
+                                <input type="text" name="message-link" class="form-control" placeholder="Enter the URL to your media here">
                                 <p class="help-block">Only post the source link from the media player - (.... src="https://www.youtube.com/embed/FZNqs0YgWkM" ....)</p>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="file-input"><i class="glyphicon glyphicon-floppy-disk"></i>Attach an image</label>
-                        <input type="file" name="media">
+                        <input type="file" name="message-media">
                         <img id="media-upload-on-form" src="">
                     </div>
-                    <!--
                     <div class="form-group create-tag">
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Tags</label>
-                                <input type="text" name="tag" class="form-control" placeholder="Tag">
+                                <input type="text" name="tags-word" class="form-control" placeholder="Tag">
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                     <button id="create-message-button" class="btn btn-default" type="submit" name="create-message-btn">Submit</button>
                 </form>
             </div>

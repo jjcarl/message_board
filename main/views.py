@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from main.models import Message, Comment, Tag
-from main.forms import MessageForm, CommentForm
+from main.forms import MessageForm, CommentForm, TagForm
 from django.contrib.auth import views, authenticate, login
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -61,12 +61,26 @@ def create_message(request):
     messages = Message.objects.all()
     tags = Tag.objects.all()
     context = {'messages': messages, 'tags': tags}
-
-    form = MessageForm(request.POST, request.FILES)
+    form = MessageForm(request.POST, request.FILES, prefix="message")
+    tags = TagForm(request.POST, prefix="tags")
     if request.method == "POST":
         if form.is_valid:
+
             message = form.save()
             context['message'] = "Your message has been saved"
+
+        if tags.is_valid:
+            tag = tags.save()
+            message
+            # tag_list = []
+            # words = tags['word']
+            # print words
+            # tag_list = words.split(',')
+            # for item in tag_list:
+            #     tag, created = Tag.objects.get_or_create(word=item)
+            #     message.tag.add(tag)
+            # context['tag'] = "Your tags have been saved"
+            
         else:
             context['message'] = form.errors
 
