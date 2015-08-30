@@ -56,33 +56,44 @@
 <div class="row">
   <div class="container col-sm-offset-2 col-sm-8">
       <div class="row">
-          <div class="col-sm-12">
-              <a href="{% url 'message_detail' id=message.id %}">
-                  <h3 class="message-title">{{message.title}}</h3>
-                  {% if message.media %}
-                      <img src="{{message.media.url}}" width="100%" height="auto">
-                  {% endif %}
-                  {% if message.post_type == 'YTB' %}
-                    <div class="video-wrapper">
-                      <iframe src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                  {% elif message.post_type == 'VMO' %}
-                  <div class="video-wrapper">
-                      <iframe src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                  </div>
-                  {% elif message.post_type == 'AUD' %}
-                      <iframe width="100%" height="auto" scrolling="no" frameborder="no" src="{{message.link}}"></iframe>
-                  {% endif %}
-                  {% if message.post_type == 'QTE' %}
-                      <p class="message-text quote-text">"{{message.text | truncatewords:'15'}}"</p>
-                      <p class="message-reference">{{message.reference}}</p>
-                  {% else %}
-                      <p class="message-text">{{message.text | truncatewords:'15'}}</p>
-                  {% endif %}
-              </a>
-              <br>
-              <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
-          </div>
+        <div class="col-sm-12">
+          <a href="{% url 'message_detail' id=message.id %}">
+            <h3 class="message-title">{{message.title}}</h3>
+            {% if message.media %}
+                <img src="{{message.media.url}}" width="100%" height="auto">
+            {% endif %}
+            {% if message.post_type == 'YTB' %}
+              <div class="video-wrapper">
+                <iframe src="{{message.link}}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+              </div>
+            {% elif message.post_type == 'VMO' %}
+            <div class="video-wrapper">
+                <iframe src="{{message.link}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            {% elif message.post_type == 'AUD' %}
+                <iframe width="100%" height="auto" scrolling="no" frameborder="no" src="{{message.link}}"></iframe>
+            {% endif %}
+            {% if message.post_type == 'QTE' %}
+                <p class="message-text quote-text">"{{message.text | truncatewords:'15'}}"</p>
+                <p class="message-reference">{{message.reference}}</p>
+            {% else %}
+                <p class="message-text">{{message.text}}</p>
+            {% endif %}
+          </a>
+          <br>
+          <p class="message-meta">Posted by {{message.author}} {{message.date_posted|timesince}} ago.</p>
+          {% if message.tag.count > 0 %}
+            <div class="row">
+              <div class="col-md-offset-1 col-md-6">        
+                <span class="tags"> Tags: 
+                  {% for tag in message.tag.all %}
+                    '{{tag}}' 
+                  {% endfor %}
+                </span>
+              </div>
+            </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>

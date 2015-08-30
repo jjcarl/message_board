@@ -64,14 +64,28 @@ def create_message(request):
     form = MessageForm(request.POST, request.FILES, prefix="message")
     tags = TagForm(request.POST, prefix="tags")
     if request.method == "POST":
+        cleaned_tags = []
+        if tags.is_valid:
+            tag_list = []
+
+            tag = tags.save(commit=False)
+
+            words = tags.cleaned_data['word']
+            print words
+            tag_list = words.split(',')
+            for word in tag_list:
+                tag, created = Tag.objects.get_or_create(word=word)
+                cleaned_tags.append(tag)
+
+            context['tag'] = "Your tags have been saved"
+
         if form.is_valid:
 
             message = form.save()
+            for tag in cleaned_tags:
+                message.tag.add(tag)
             context['message'] = "Your message has been saved"
 
-        if tags.is_valid:
-            tag = tags.save()
-            message
             # tag_list = []
             # words = tags['word']
             # print words
@@ -80,7 +94,7 @@ def create_message(request):
             #     tag, created = Tag.objects.get_or_create(word=item)
             #     message.tag.add(tag)
             # context['tag'] = "Your tags have been saved"
-            
+
         else:
             context['message'] = form.errors
 

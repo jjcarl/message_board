@@ -31,7 +31,7 @@
                             {% else %}
                                 <p class="message-text">{{message.text | truncatewords:'10'}}</p>
                             {% endif %}
-                            <p>Posted by {{message.author}} on {{message.date_posted}}.</p>
+                            <p>Posted by {{message.author}} {{message.date_posted|timesince}} ago.</p>
                             <div>
                                 <button class="btn one-message">Delete this post</button>
                             </div>

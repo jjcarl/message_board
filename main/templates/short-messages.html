@@ -26,7 +26,18 @@
                     {% endif %}
                 </a>
                 <br>
-                <p class="message-meta">Posted by {{message.author}} on {{message.date_posted}}.</p>
+                <p class="message-meta">Posted by {{message.author}} {{message.date_posted|timesince}} ago.</p>
+                {% if message.tag.count > 0 %}
+                    <div class="row">
+                      <div class="col-md-offset-1 col-md-6">        
+                        <span class="tags"> Tags: 
+                          {% for tag in message.tag.all %}
+                            '{{tag}}' 
+                          {% endfor %}
+                        </span>
+                      </div>
+                    </div>
+              {% endif %}
             </div>
         </div>
     </div>
