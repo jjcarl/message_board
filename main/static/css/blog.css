@@ -2,7 +2,7 @@
 .navbar-default .navbar-nav>.open>a:focus, 
 .navbar-default .navbar-nav>.open>a:hover {
     color: #ccc;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
 }
 
 .navbar .navbar-default .navbar-custom .navbar-fixed-top .is-fixed .is-visible {
@@ -13,14 +13,14 @@
 .navbar-custom .nav>li>a:hover, 
 .navbar-custom .nav>li>a:focus {
     color: #ccc;
-    background-color: #2F2E5F;    
+   
 }
 
 .dropdown-menu>li>a:focus, 
 .dropdown-menu>li>a:hover,
 .dropdown-menu {
     color: #ccc;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
     width: 100%;
     border: none;
 }
@@ -35,7 +35,7 @@
 
 .navbar-custom.is-fixed {
     color: #FFF;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
     border: none;
 }
 
@@ -46,11 +46,12 @@
 body {
     font-family: 'Helvetica', sans-serif;
     margin-top: 60px;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
 }
 
 .container {
     background-color: #f5f5f5;
+    color: #020202;
     border-radius: 15px;
     padding: 5px;
     margin-top: 10px;
@@ -174,14 +175,14 @@ hr {
 }
 
 .logo-container {
-    background-color: #FFF;
+    background-color: #CFCED3;
     border-radius: 15px;
     padding: 5px;
 
 }
 
 .company-title {
-    color: #00F7F6;
+    color: #FF0000;
     font-size: 4em;
     font-family: futura, didot, georgia, helvetica;
 }
