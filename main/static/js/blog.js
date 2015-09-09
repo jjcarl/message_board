@@ -224,7 +224,7 @@ function clearForm(){
 }
 
 
-$('#create-message-form select[name="post_type"]').change(function(){
+$('#create-message-form select[name="message-post_type"]').change(function(){
     switch ($(this).val()){
         case 'QTE':
             $('#quote-reference').show();
@@ -249,7 +249,7 @@ $('#create-message-form select[name="post_type"]').change(function(){
     }
 });
 
-$('#edit-message-form select[name="post_type"]').change(function(){
+$('#edit-message-form select[name="message-post_type"]').change(function(){
     switch ($(this).val()){
         case 'QTE':
             $('#edit-quote-reference').show();

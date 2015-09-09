@@ -2,7 +2,7 @@
 .navbar-default .navbar-nav>.open>a:focus, 
 .navbar-default .navbar-nav>.open>a:hover {
     color: #ccc;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
 }
 
 .navbar .navbar-default .navbar-custom .navbar-fixed-top .is-fixed .is-visible {
@@ -13,14 +13,14 @@
 .navbar-custom .nav>li>a:hover, 
 .navbar-custom .nav>li>a:focus {
     color: #ccc;
-    background-color: #2F2E5F;    
+   
 }
 
 .dropdown-menu>li>a:focus, 
 .dropdown-menu>li>a:hover,
 .dropdown-menu {
     color: #ccc;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
     width: 100%;
     border: none;
 }
@@ -35,7 +35,7 @@
 
 .navbar-custom.is-fixed {
     color: #FFF;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
     border: none;
 }
 
@@ -46,11 +46,12 @@
 body {
     font-family: 'Helvetica', sans-serif;
     margin-top: 60px;
-    background-color: #2F2E5F;
+    background-color: #63afd0;
 }
 
 .container {
     background-color: #f5f5f5;
+    color: #020202;
     border-radius: 15px;
     padding: 5px;
     margin-top: 10px;
@@ -61,6 +62,9 @@ body {
 }
 
 .page-title {
+    text-align: center;
+}
+h1, h2, h3, h4 {
     text-align: center;
 }
 
@@ -174,16 +178,27 @@ hr {
 }
 
 .logo-container {
-    background-color: #FFF;
+    background-color: #CFCED3;
     border-radius: 15px;
     padding: 5px;
 
 }
 
-.company-title {
-    color: #00F7F6;
-    font-size: 4em;
+#company-title {
+    color: #FF0000;
+    font-size: 8em;
     font-family: futura, didot, georgia, helvetica;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 1.8em;
+    position: relative;
+    display: block;
+    z-index: 1;    
+}
+.company-subtitle {
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
 }
 
 .dropdown-menu {
@@ -199,4 +214,32 @@ hr {
 .tags {
     font-size: .8em;
     font-style: italic;
+}
+
+.current-projects {
+    background-color: #fff;
+}
+.completed-projects {
+    border-radius: 1em;
+    background-color: #ccc;
+    padding: 1em;
+}
+.project-preview-pic {
+    max-width: 10em;
+    height: auto;
+}
+.front-page-headline-container {
+    position: relative;
+    height: 29em;
+    background-image: url('/static/img/empty.jpg');
+    background-size: 150%;
+    opacity: .9;
+}
+.front-page-headline-pic {
+    /*opacity: .9;*/
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 0;
+
 }
