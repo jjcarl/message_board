@@ -201,3 +201,16 @@ hr {
     font-size: .8em;
     font-style: italic;
 }
+
+.current-projects {
+    background-color: #fff;
+}
+.completed-projects {
+    border-radius: 1em;
+    background-color: #ccc;
+    padding: 1em;
+}
+.project-preview-pic {
+    max-width: 10em;
+    height: auto;
+}

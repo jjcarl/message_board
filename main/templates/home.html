@@ -1,4 +1,5 @@
 {% extends "front-base.html" %}
+{% load staticfiles %}
 {% block content %}
     <div class="container logo-container">
         <div class="row">
@@ -8,29 +9,61 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-8">
-                <h2><center>Current Projects</center></h2>
+        <div class="container-fluid current-projects">
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <h2><center>Current Projects</center></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <div class="project-preview">
+                        <h4>Checkin</h4>
+                        <p>A family and task management tool based that allows users to create lovations and to-do lists. User can then use the iOS app to check-in at locations, which will automatically pull up to-do lists that were created for that location and that user. This is based on a Django Rest back-end with an Angular front-end. The iOS app is currently in beta testing.</p>
+                        <img src="{% static "img/Checkin.jpg" %}" alt="Message Board Preview" class="project-preview-pic">
+                        <p>Designed from the start to be compatible with web, iOS and Android apps</p>
+                        <p>An initial preview is available on <a href="http://checkin.jc2dev.com">JC2DEV.com</a></p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-8">
-                <h3>Family Check-in</h3>
-                <p>A web-based API built on Django Rest Framework and AngularJS</p>
-                <p>Designed from the start to be compatible with web, iOS and Android apps</p>
-                <p>An iOS app is already in production</p>
-                <p>Checkout the initial front end concept at <a href="http://checkin.jc2dev.com">checkin.jc2dev.com</a></p>
+        <div class="container-fluid completed-projects">
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <h2><center>Completed Projects</center></h2>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-8">
-                <h2><center>Completed Projects</center></h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-8">
-                <h3>Naturalization app for iOS</h3>
-                <p>Already in beta testing. <b>Coming soon to the market.</b></p>
+            <hr>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <div class="row">
+                        <div class="project-preview col-sm-6">
+                            <h4>Message Board</h4>
+                            <p>The main message board for JC2DEV.com, complete with custom formatting based on the type of message post and content.</p>
+                            <img src="{% static "img/Messageboard.jpg" %}" alt="Message Board Preview" class="project-preview-pic">
+                            <p>Already on <a href="/message/">JC2DEV.com</a></p>
+                        </div>
+                        <div class="project-preview col-sm-6">
+                            <h4>Naturalization app for iOS</h3>
+                            <p>Already in beta testing. <b>Coming soon to the market.</b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="project-preview col-sm-6">
+                            <h4>Group project - Movie Picker</h4>
+                            <p>This was a group project done together with three other coders at Coding Campus</p>
+                            <p>It is designed as a web app that will make choosing a movie between a group of people a much easier and less painful process</p>
+                            <img src="{% static "img/Moviepicker.jpg" %}" alt="Movie Picker preview pic" class="project-preview-pic">
+                            <p>Check it out <a href="http://moviepicker.peterhenry.net/">online.</a></p>
+                        </div>
+                        <div class="project-preview col-sm-6">
+                            <h4>Group project - Recipes</h4>
+                            <p>This was another group project that was completed together with three other coders at Coding Campus</p>
+                            <p>It is designed as recipe repository where a user can store their recipes, record their personal reviews of the recipes and other facts about them. It can also dynamically scale a recipe for more or less servings.</p>
+                            <img src="{% static "img/Recipe.jpg" %}" alt="Recipe  preview pic" class="project-preview-pic">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
