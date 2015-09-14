@@ -133,6 +133,10 @@ hr {
     margin: auto;
 }
 
+.carousel-caption {
+    margin-bottom: 10em;
+    vertical-align: middle;
+}
 
 #comment-form,
 #edit-message-form,
@@ -248,16 +252,18 @@ hr {
     display: block;
     margin: auto;
 }
+.current-project-preview-pic {
+    width: 15em;
+    height: auto;
+    display: block;
+    margin: auto;
+}
 .project-preview-hr{
     display: none;
 }
 .front-page-headline-container {
     position: relative;
     height: 29em;
-    /*background-image: url('/static/img/empty.jpg');
-    background-size: 150%;
-    opacity: .9;*/
-
     background-color: #5a89c0;
     /* IE9, iOS 3.2+ */
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIxMDAlIiB5MT0iMTAwJSIgeDI9IjAlIiB5Mj0iMCUiPjxzdG9wIHN0b3AtY29sb3I9IiM3YmI4ZmYiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzM5NWE4MCIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L2xpbmVhckdyYWRpZW50PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjdnNnZykiIC8+PC9zdmc+);
@@ -294,9 +300,15 @@ hr {
     .front-page-headline-container {
     position: relative;
     height: 29em;
-    background-image: url('/static/img/empty.jpg');
-    background-size: 150%;
-    opacity: .9;
+    background-color: #5a89c0;
+    /* IE9, iOS 3.2+ */
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIxMDAlIiB5MT0iMTAwJSIgeDI9IjAlIiB5Mj0iMCUiPjxzdG9wIHN0b3AtY29sb3I9IiM3YmI4ZmYiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzM5NWE4MCIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L2xpbmVhckdyYWRpZW50PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjdnNnZykiIC8+PC9zdmc+);
+    background-image: -webkit-gradient(linear, 100% 100%, 0% 0%,color-stop(0, rgb(123, 184, 255)),color-stop(1, rgb(57, 90, 128)));
+    /* Android 2.3 */
+    background-image: -webkit-repeating-linear-gradient(bottom right,rgb(123, 184, 255) 0%,rgb(57, 90, 128) 100%);
+    /* IE10+ */
+    background-image: repeating-linear-gradient(to top left,rgb(123, 184, 255) 0%,rgb(57, 90, 128) 100%);
+    background-image: -ms-repeating-linear-gradient(bottom right,rgb(123, 184, 255) 0%,rgb(57, 90, 128) 100%);
     }
     .project-preview-hr {
         display: block;
