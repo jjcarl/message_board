@@ -16,7 +16,7 @@
             <div class="item active">
               <img src="{% static 'img/lights.jpg' %}" alt="...">
               <div class="carousel-caption">
-                <h3>Welcome to the message board</h3>
+                <h2>Welcome to the message board</h2>
               </div>
             </div>
             {% for message in pinned %}
@@ -34,7 +34,12 @@
                   
                   <div class="carousel-caption">
                     <h3>{{message.title}}</h3>
-                    <p>{{message.text | truncatewords:'20'}}</p>
+                    {% if message.post_type == 'QTE' %}
+                        <p class="message-text quote-text">{{message.text}}</p>
+                        <p class="message-reference">{{message.reference}}</p>
+                    {% else %}
+                        <p class="message-text">{{message.text}}</p>
+                    {% endif %}
                   </div>
                 </a>
               </div>
@@ -56,7 +61,7 @@
 <div class="row">
   <div class="container col-sm-offset-2 col-sm-8">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-offset-1 col-sm-10">
           <a href="{% url 'message_detail' id=message.id %}">
             <h3 class="message-title">{{message.title}}</h3>
             {% if message.media %}
