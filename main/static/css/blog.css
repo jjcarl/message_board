@@ -9,9 +9,7 @@
 }
 
 .navbar-custom .nav li a,
-.navbar-custom .nav>li>a,
-.navbar-custom .nav>li>a:hover, 
-.navbar-custom .nav>li>a:focus {
+.navbar-custom .nav>li>a {
     color: #9a9a9a;
    font-size: .8em;
 }
@@ -28,6 +26,14 @@
     color: #9a9a9a;
 }
 
+.navbar-custom .nav li a:hover, 
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav>li>a:hover, 
+.navbar-custom .nav>li>a:focus,
+.navbar-custom .navbar-brand:hover, 
+.navbar-custom .navbar-brand:focus{
+    color: #505050;
+}
 .navbar-custom .navbar-brand,
 .navbar-custom.is-fixed .navbar-brand {
     color: #9a9a9a;
