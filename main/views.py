@@ -71,7 +71,6 @@ def create_message(request):
             tag = tags.save(commit=False)
 
             words = tags.cleaned_data['word']
-            print words
             tag_list = words.split(',')
             for word in tag_list:
                 tag, created = Tag.objects.get_or_create(word=word)
@@ -213,13 +212,15 @@ def message_search(request):
 
         context['valid'] = "Form is Valid"
 
-        return render_to_response("message_search.html", context, context_instance=request_context)
+        return render_to_response(
+            "message_search.html", context, context_instance=request_context)
 
     else:
         form = request.POST
         context['form'] = form
 
-        return render_to_response("message_search.html", context, context_instance=request_context)
+        return render_to_response(
+            "message_search.html", context, context_instance=request_context)
 
 
 # ============= AUTHENTICATION ==================
