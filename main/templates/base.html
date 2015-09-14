@@ -4,6 +4,15 @@
 <head>
     <title>JC2DEV.com</title>
     <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="http://jc2dev.com/static/img/Messageboard.jpg">
+    <meta name="twitter:title" content="JC2DEV.com Message Board">
+    <meta name="twitter:description" content="The message board for JC2DEV.com featuring information and updates on the development process for the current projects.">
+    <meta name="twitter:image" content="Preview of the JC2DEV website.">
+    <meta property="og:url" content="http://jc2dev.com/message/">
+    <meta property="og:site_name" content="JC2DEV.com">
+    <meta property="og:title" content="JC2DEV.com Message Board">
+    <meta property="og:description" content="The message board for JC2DEV.com featuring information and updates on the development process for the current projects.">
+    <meta property="og:image" content="{% static 'img/Messageboard.jpg' %}">
     <link rel="icon" type="image/png" href="{% static 'img/logo.png' %}">
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
@@ -27,7 +36,7 @@
         </div>
     </footer>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="{%static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{%static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/blog.js' %}"></script>
     {% block js %}
         
