@@ -85,15 +85,6 @@ def create_message(request):
                 message.tag.add(tag)
             context['message'] = "Your message has been saved"
 
-            # tag_list = []
-            # words = tags['word']
-            # print words
-            # tag_list = words.split(',')
-            # for item in tag_list:
-            #     tag, created = Tag.objects.get_or_create(word=item)
-            #     message.tag.add(tag)
-            # context['tag'] = "Your tags have been saved"
-
         else:
             context['message'] = form.errors
 
