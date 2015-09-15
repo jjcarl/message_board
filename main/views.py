@@ -60,12 +60,12 @@ def short_messages(request):
 def create_message(request):
     messages = Message.objects.all()
     tags = Tag.objects.all()
-    context = {'messages': messages, 'tags': tags}
+    context = {'messages': messages, 'tags': tags, 'tagform': TagForm}
     form = MessageForm(request.POST, request.FILES, prefix="message")
-    tags = TagForm(request.POST, prefix="tags")
+    tags = TagForm(request.POST)
     if request.method == "POST":
         cleaned_tags = []
-        if tags.is_valid:
+        if tags.is_valid():
             tag_list = []
 
             tag = tags.save(commit=False)
@@ -78,13 +78,13 @@ def create_message(request):
 
             context['tag'] = "Your tags have been saved"
 
-        if form.is_valid:
+        if form.is_valid():
 
             message = form.save()
             for tag in cleaned_tags:
                 message.tag.add(tag)
             context['message'] = "Your message has been saved"
-
+            return redirect('mbhome')
         else:
             context['message'] = form.errors
 
