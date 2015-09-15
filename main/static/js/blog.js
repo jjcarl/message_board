@@ -164,7 +164,6 @@ $('#edit-message-btn').click(function(e){
     var id = $(this).parent().attr('data-post-id');
 
     $.get('/message/message-detail/' + id + '/json/', function(data){
-        console.log(data);
         var text = data[0].fields.text
         var title = data[0].fields.title
         var id = data[0].pk
@@ -172,6 +171,7 @@ $('#edit-message-btn').click(function(e){
         var media = data[0].fields.media
         var post_type = data[0].fields.post_type
         var link = data[0].fields.link
+        var reference = data[0].fields.reference
 
         $('#edit-message-form input[name="author"]').val(author);
         $('#edit-message-form input[name="title"]').val(title);
@@ -179,6 +179,7 @@ $('#edit-message-btn').click(function(e){
         $('#edit-message-form input[name="id"]').val(id);
         $('#edit-message-form select[name="post_type"]').val(post_type);
         $('#edit-message-form input[name="link"]').val(link);
+        $('#edit-message-form input[name="reference"]').val(reference);
         switch ($('#edit-message-form select[name="post_type"]').val()){
             case 'QTE':
                 $('#edit-quote-reference').show();
