@@ -276,3 +276,23 @@ $('.navbar-right').on('click', '#sidebar-toggle', function(e){
     e.preventDefault();
     $('#right-side-navbar').show();
 })
+
+$('.project-preview').on('click', '.current-project-preview-pic', function(){
+    if ($(this).attr('size') === '100') {
+        $(this).animate({width: '35em'})
+        $(this).attr('size', '500')
+    } else if ($(this).attr('size') === '500') {
+        $(this).animate({width: '15em'})
+        $(this).attr('size', '100')
+    }
+})
+
+$('.project-preview').on('click', '.project-preview-pic', function(){
+    if ($(this).attr('size') === '100') {
+        $(this).animate({width: '23em'})
+        $(this).attr('size', '500')
+    } else if ($(this).attr('size') === '500') {
+        $(this).animate({width: '12em'})
+        $(this).attr('size', '100')
+    }
+})
