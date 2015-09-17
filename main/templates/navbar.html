@@ -12,20 +12,21 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'mbhome' %}">Message Board</a></li>
+        
         
         {% if user.is_authenticated %}
           <li><a href="{% url 'create_message' %}">Create a message</a></li>
         {% endif %}
           <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Options<span class="caret"></span></a>
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Message Board<span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <li><a href="{% url 'mbhome' %}">Message Board Home</a></li>
                 <li><a href="{% url 'message_board' %}">All messages</a></li>
                 <li role="separator" class="divider"></li>
                 <form class="navbar-form navbar-left" id="search-form" method="post" role="search" action="{% url 'message_search' %}">
                   {% csrf_token %}
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="word">
+                    <input type="text" class="form-control" placeholder="Search Message Board" name="word">
                   </div>
                   <button type="submit" class="search-btn" name="search-btn">Search</button>
                 </form>
