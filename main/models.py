@@ -48,7 +48,7 @@ class Comment(models.Model):
 
 
 class Tag(models.Model):
-    word = models.CharField(max_length=50, unique=True)
+    word = models.CharField(max_length=100)
 
     def __unicode__(self):
         return self.word
