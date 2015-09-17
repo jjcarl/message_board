@@ -58,10 +58,12 @@
         {% endif %}
         <div class="row" id="message-id-row">       
             <div class="col-md-offset-3" data-post-id="{{message.id}}">
-                {% if message in user.favorites.all %}
-                    <button class="btn" id="unfavorite-btn"><i class="glyphicon glyphicon-star"></i>Un-Favorite</button>
-                    {% else %}
-                    <button class="btn" id="favorite-btn"><i class="glyphicon glyphicon-star"></i>Favorite</button>
+                {% if user.is_authenticated %}
+                    {% if message in user.favorites.all %}
+                        <button class="btn" id="unfavorite-btn"><i class="glyphicon glyphicon-star"></i>Un-Favorite</button>
+                        {% else %}
+                        <button class="btn" id="favorite-btn"><i class="glyphicon glyphicon-star"></i>Favorite</button>
+                    {% endif %}
                 {% endif %}
                 {% if message.author == user %}
                     <button class="btn" id="edit-message-btn">Edit This Message</button>

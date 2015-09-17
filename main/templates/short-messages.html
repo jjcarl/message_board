@@ -1,5 +1,5 @@
 {% for message in messages %}
-    <div class="container">
+    <div class="container all-messages">
         <div class="row">
             <div class="col-sm-offset-1 col-sm-10 short-message">
                 <a href="{% url 'message_detail' id=message.id %}">
