@@ -1,0 +1,48 @@
+{% extends "front-base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="background-video-container">
+        <video loop muted autoplay poster="home/puppy.jpg">
+            <source src="{% static 'img/blocks.mp4' %}">
+        </video>
+    </div>
+
+    <div class="container-fluid jonathon-page-title">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-offset-1 col-md-10">
+                    <h1>Jonathon Carlson</h1>
+                    <h3>Why do I love being a web developer?</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="empty-container"></div>
+    <div class="space-container">
+        <div class="about-text">
+            <br>
+            <p>Just like my two boys,</p>
+            <p>I love to explore and learn new things.</p>
+            <img src="{% static 'img/boys.jpg' %}" alt="The boys playing together" class="story-pic">
+            <p>I also love to create new tools and improve things that I'm working on</p>
+        </div>
+    </div>
+    <div class="empty-container"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 about text">
+                <p>I come from a military background. With over 15 years in the Utah Army National Guard, I have traveled to a lot of places and have had the good fortune of enjoying some unique experiences.</p>
+                <img src="{% static 'img/family_in_uniform.jpg' %}" alt="The family" class="story-pic">
+            </div>
+        </div>
+    </div>
+    <div class="empty-container"></div>
+    <div class="space-container">
+        <div class="about-text">
+            <p>But it's not all work and no play at my house, we also like to go out and have fun together.</p>
+            <img src="{% static 'img/family_play.jpg' %}" alt="Playing with the family" class="story-pic">
+            <br>
+            <p>Thanks for checking out my page.</p>
+        </div>
+    </div>
+{% endblock content %}

@@ -21,6 +21,11 @@ def home(request):
     return render(request, 'home.html', context)
 
 
+def jonathon(request):
+    context = {}
+    return render(request, 'jonathon.html', context)
+
+
 # ========== Message Board ===========
 
 

@@ -281,6 +281,52 @@ hr {
     font-size: .7em;
 }
 
+.about-text {
+    text-align: center;
+}
+
+.background-video-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+}
+
+.background-video-container video {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+}
+
+.jonathon-page-title {
+  background-image: url('../img/workstation.jpg');
+  background-color: #eee;
+  height: 40em;
+}
+
+.jonathon-page-title h3 {
+    color: #201EFF;
+}
+
+.space-container {
+  background-color: #959595;
+  padding: 3em;
+}
+
+.empty-container {
+  height: 40em;
+}
+
+.story-pic {
+    width: 75%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2em
+}
+
 @media(max-width: 990px){
     .project-preview-hr {
         display: block;
