@@ -56,6 +56,7 @@
 body {
     font-family: 'Helvetica', sans-serif;
     margin-top: 60px;
+    background-color: #F3F3F3;
 }
 
 p {
@@ -82,16 +83,11 @@ hr {
     color: #020202;
     border-radius: 1em;
     padding: 0px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    -webkit-box-shadow: 0px 0px 20px 10px rgba(20,19,20,0.49);
-    -moz-box-shadow: 0px 0px 20px 10px rgba(20,19,20,0.49);
-    box-shadow: 0px 0px 20px 10px rgba(20,19,20,0.49);
-}
-
-.all-messages {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.3);
 }
 
 .message-meta {
@@ -279,6 +275,52 @@ hr {
 }
 .copyright {
     font-size: .7em;
+}
+
+.about-text {
+    text-align: center;
+}
+
+.background-video-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+}
+
+.background-video-container video {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+}
+
+.jonathon-page-title {
+  background-image: url('../img/workstation.jpg');
+  background-color: #eee;
+  height: 40em;
+}
+
+.jonathon-page-title h3 {
+    color: #201EFF;
+}
+
+.space-container {
+  background-color: #959595;
+  padding: 3em;
+}
+
+.empty-container {
+  height: 40em;
+}
+
+.story-pic {
+    width: 75%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2em
 }
 
 @media(max-width: 990px){
