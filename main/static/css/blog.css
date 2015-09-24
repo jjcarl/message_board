@@ -47,6 +47,7 @@
 .navbar-brand {
     color: #9a9a9a;
     font-size: 1em;
+    text-shadow: 1px 1px 1px #000;
 }
 
 #load-more-messages {
@@ -182,8 +183,8 @@ hr {
     background-color: #CFCED3;
     border-radius: 15px;
     padding: 5px;
-
 }
+
 
 #company-title {
     color: #c0c0c0;
@@ -194,8 +195,14 @@ hr {
     margin-top: 1.1em;
     position: relative;
     display: block;
-    z-index: 1;    
+    z-index: 1;
+    text-shadow: 3px 3px 2px #000;
+    -webkit-transition: all 0.12s ease-out;
+    -moz-transition:    all 0.12s ease-out;
+    -ms-transition:     all 0.12s ease-out;
+    -o-transition:      all 0.12s ease-out;
 }
+
 .company-subtitle {
     color: #343740;
     text-align: center;
@@ -296,13 +303,14 @@ hr {
 
 .jonathon-page-title {
     background-image: url('../img/workstation.jpg');
-    background-color: #eee;
+    background-position: center;
+    background-color: #ddd;
     height: 40em;
 }
 
 .space-container {
     position: relative;
-    background-color: #999;
+    background-color: #eee;
     padding: 3em;
 }
 
@@ -314,7 +322,8 @@ hr {
     width: 75%;
     display: block;
     margin: auto;
-    margin-bottom: 2em
+    margin-bottom: 2em;
+    border: solid 2px #aaa;
 }
 
 .pull-down {
