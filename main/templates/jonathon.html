@@ -5,47 +5,82 @@
         <img src="{% static 'img/lake.jpg' %}" alt="">
     </div>
 
-    <div class="container-fluid jonathon-page-title">
+    <div class="container-fluid jonathon-page-title" id="jonathon-title">
         <div class="row">
             <div class="container">
                 <div class="col-md-offset-1 col-md-10">
                     <h1>Jonathon Carlson</h1>
-                    <h3>Why do I love being a web developer?</h3>
+                    <p class="about-text">
+                        <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://www.linkedin.com/in/jonathoncarlson" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-linkedin-square fa-stack-2x"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/jjcarl" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-github-square fa-stack-2x"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </p>
                 </div>
+            </div>
+            
+        </div>
+        <div class="container pull-down">
+            <h2>Why do I love being a web developer?</h2>
+            <p class="about-text">Scroll or click down to find out...</p>
+            <div class="scroll-arrow">
+                <a href="#boys"><i class="glyphicon glyphicon-menu-down"></i></a>
             </div>
         </div>
     </div>
     <div class="empty-container"></div>
     <div class="space-container">
-        <div class="about-text">
-            <br>
-            <p>Just like my two boys,</p>
-            <p>I love to explore and learn new things.</p>
-            <img src="{% static 'img/boys.jpg' %}" alt="The boys playing together" class="story-pic">
-            <p>I also love to create new tools and improve things that I'm working on.</p>
-            <p>I love finding new problems to solve and I love to be challenged each day in what I do.</p>
-            <p>I attended the Python/Django web development course at <a href="http://codingcamp.us/">Coding Campus</a> to learn full stack web development.</p>
+        <div class="row">
+            <div class="about-text" id="boys">
+                <br>
+                <p>Just like my two boys,</p>
+                <p>I love to explore and learn new things.</p>
+                <img src="{% static 'img/boys.jpg' %}" alt="The boys playing together" class="story-pic">
+                <p>I also love to create new tools and improve things that I'm working on.</p>
+                <p>I love finding new problems to solve and I love to be challenged each day in what I do.</p>
+                <p>I attended the Python/Django web development course at <a href="http://codingcamp.us/" target="_blank">Coding Campus</a> to learn full stack web development and I have been continuing to build my skills beyond the scope of the course.</p>
+            </div>
+        </div>
+        <div class="scroll-arrow">
+            <a href="#mil-background"><i class="glyphicon glyphicon-menu-down"></i></a>
         </div>
     </div>
     <div class="empty-container"></div>
-    <div class="container">
+    <div class="space-container" id="mil-background">
         <div class="row">
-            <div class="col-md-offset-1 col-md-10 about text">
+            <div class="col-md-offset-1 col-md-10 about-text">
                 <p>I come from a military background. With over 15 years in the Utah Army National Guard, I have traveled all over the world and have had the good fortune of enjoying some unique experiences and becoming familiar with a wide range of cultures.</p>
-                <p>I have also had the great opportunity to learn how to be self reliant and to apply myself to the tasks at hand.</p>
+                <p>I have learned how to be a team member and how to lead.</p>
+                <p>I have also had the great opportunity to learn how to be self-reliant and to apply myself to the tasks at hand.</p>
                 <img src="{% static 'img/family_in_uniform.jpg' %}" alt="The family" class="story-pic">
             </div>
         </div>
+        <div class="scroll-arrow">
+            <a href="#play-time"><i class="glyphicon glyphicon-menu-down"></i></a>
+        </div>
     </div>
     <div class="empty-container"></div>
-    <div class="space-container">
-        <div class="about-text">
+    <div class="space-container" id="play-time">
+        <div class="row about-text">
+            <p>But becoming a developer has helped me to be at home, in the beautiful mountains of Utah with my family, where I should be.</p>
             <p>But it's not all work and no play at my house, I also love to go out and have fun with the family.</p>
             <p>Being a developer gives me the chance to do something I love, while also being able to spend more time with those most important to me.</p>
             <img src="{% static 'img/family_play.jpg' %}" alt="Playing with the family" class="story-pic">
             <p>For more information you can also check out my <a href="https://www.linkedin.com/in/jonathoncarlson">LinkedIn</a> and my <a href="https://github.com/jjcarl"> github</a>.</p>
             <br>
-
         </div>
+        <p class="about-text"><a href="#jonathon-title">Return to the top</a></p>
     </div>
 {% endblock content %}
