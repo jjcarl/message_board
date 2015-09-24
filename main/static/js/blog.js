@@ -275,7 +275,7 @@ $('#edit-message-form select[name="message-post_type"]').change(function(){
 if (window.innerWidth > 700){
     $('.project-preview').on('click', '.current-project-preview-pic', function(){
         if ($(this).attr('size') === '100') {
-            $(this).animate({width: '35em'})
+            $(this).animate({width: '100%'})
             $(this).attr('size', '500')
         } else if ($(this).attr('size') === '500') {
             $(this).animate({width: '15em'})
@@ -285,7 +285,7 @@ if (window.innerWidth > 700){
 
     $('.project-preview').on('click', '.project-preview-pic', function(){
         if ($(this).attr('size') === '100') {
-            $(this).animate({width: '23em'})
+            $(this).animate({width: '100%'})
             $(this).attr('size', '500')
         } else if ($(this).attr('size') === '500') {
             $(this).animate({width: '12em'})
@@ -293,3 +293,18 @@ if (window.innerWidth > 700){
         }
     })
 }
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});

@@ -131,12 +131,7 @@ hr {
 .img-responsive, 
 .thumbnail a>img, 
 .thumbnail>img {
-    margin: auto;
-}
-
-.carousel-image {
-    height: 600;
-    width: auto;
+    height: 800px;
     margin: auto;
 }
 
@@ -241,12 +236,14 @@ hr {
     height: auto;
     display: block;
     margin: auto;
+    border: solid 1px #ccc;
 }
 .current-project-preview-pic {
     width: 15em;
     height: auto;
     display: block;
     margin: auto;
+    border: solid 1px #ccc;
 }
 .project-preview-hr{
     display: none;
@@ -282,38 +279,35 @@ hr {
 }
 
 .background-video-container {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: -2;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
 }
 
 .background-video-container video {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  opacity: .5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
 }
 
 .jonathon-page-title {
-  background-image: url('../img/workstation.jpg');
-  background-color: #eee;
-  height: 40em;
-}
-
-.jonathon-page-title h3 {
-    color: #201EFF;
+    background-image: url('../img/workstation.jpg');
+    background-color: #eee;
+    height: 40em;
 }
 
 .space-container {
-  background-color: #959595;
-  padding: 3em;
+    position: relative;
+    background-color: #999;
+    padding: 3em;
 }
 
 .empty-container {
-  height: 40em;
+    height: 40em;
 }
 
 .story-pic {
@@ -321,6 +315,20 @@ hr {
     display: block;
     margin: auto;
     margin-bottom: 2em
+}
+
+.pull-down {
+    position: static;
+    margin-top: 30%
+}
+
+.scroll-arrow {
+    margin-left: 45%;
+    bottom: 0;
+}
+
+.glyphicon.glyphicon-menu-down {
+    font-size: 4em;
 }
 
 @media(max-width: 990px){
