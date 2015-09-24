@@ -20,11 +20,11 @@
             <div class="row">
                 <div class="col-xs-12 col-md-offset-2 col-md-8">
                     <div class="project-preview">
-                        <h4>Checkin</h4>
+                        <h4><a href="http://checkin.jc2dev.com" target="_blank">Checkin</a></h4>
                         <p>A family and task management tool that allows users to create locations and to-do lists. Users can then use the iOS app to check-in at locations, which will automatically pull up to-do lists that were created for that location and that user. This is both a web and iOS app. The web app is based on a Django Rest back-end with an AngularJS front-end. Social authentication has been implemented on this app, with the ability to log in using Facebook already up and running. The iOS app is currently in beta testing.</p>
                         <a><img src="{% static 'img/checkin.jpg' %}" alt="Message Board Preview" class="current-project-preview-pic" size="100"></a>
                         <p>Designed from the start to be compatible with web, iOS and Android (coming soon) apps</p>
-                        <p>An initial preview of the web app is available <a href="http://checkin.jc2dev.com">here</a></p>
+                        <p>An initial preview of the web app is available <a href="http://checkin.jc2dev.com" target="_blank">here</a></p>
                     </div>
                 </div>
             </div>
@@ -42,33 +42,33 @@
                 <div class="col-xs-12 col-md-offset-2 col-md-8">
                     <div class="row">
                         <div class="project-preview col-xs-12 col-md-6">
-                            <h4>Message Board</h4>
+                            <h4><a href="{% url 'mbhome' %}">Message Board</a></h4>
                             <p>The main message board for JC2DEV.com, complete with messages, comments, tags and custom formatting based on the type of message content.</p>
                             <a><img src="{% static "img/Messageboard.jpg" %}" alt="Message Board Preview" class="project-preview-pic" size="100"></a>
-                            <p>Already funcitoning <a href="/message/">here</a> on JC2DEV</p>
+                            <p>Already funcitoning <a href="{% url 'mbhome' %}">here</a> on JC2DEV</p>
                             <hr class="project-preview-hr">
                         </div>
                         <div class="project-preview col-xs-12 col-md-6">
                             <h4>Naturalization app for iOS</h3>
                             <p>A test prep app for those taking the US naturalization test (Citizenship Test). It features study, fast-quiz and full-quiz modes.</p>
-                            <a><img src="{% static "img/naturalize.jpg" %}" alt="NaturalizeMe Preview Picture" class="project-preview-pic" size="100"></a>
-                            <p>Already in beta testing. <b>Coming soon to the market.</b></p>
+                            <a><img src="{% static 'img/naturalize.jpg' %}" alt="NaturalizeMe Preview Picture" class="project-preview-pic" size="100"></a>
+                            <p>Already in beta testing. Coming soon to the market.</p>
                             <hr class="project-preview-hr">
                         </div>
                     </div>
                     <div class="row">
                         <div class="project-preview col-xs-12 col-md-6">
-                            <h4>Group project - Movie Picker</h4>
+                            <h4><a href="http://moviepicker.peterhenry.net/" target="_blank">Group project - Movie Picker</a></h4>
                             <p>This was a group project done together with three other developers at Coding Campus</p>
                             <p>It's a web app that will make choosing a movie between a group of people a much easier and less painful process. Users can add movies to the database and vote for them. All votes will be automatically counted for those users who join a movie-watching event.</p>
                             <a><img src="{% static "img/Moviepicker.jpg" %}" alt="Movie Picker preview pic" class="project-preview-pic" size="100"></a>
-                            <p>Check it out <a href="http://moviepicker.peterhenry.net/">online.</a></p>
+                            <p>Check it out <a href="http://moviepicker.peterhenry.net/" target="_blank">here</a>.</p>
                             <hr class="project-preview-hr">
                         </div>
                         <div class="project-preview col-xs-12 col-md-6">
                             <h4>Group project - Recipes</h4>
                             <p>This was another group project that was completed together with three other developers at Coding Campus</p>
-                            <p>It's a recipe repository where a user can store their recipes, record their personal reviews of the recipes and other facts about them. It can also dynamically scale a recipe for more or less servings.</p>
+                            <p>It's a recipe repository where a user can store their recipes, record their personal reviews of the recipes and other facts about them. It can also dynamically scale a recipe for more or fewer servings.</p>
                             <a><img src="{% static "img/Recipe.jpg" %}" alt="Recipe  preview pic" class="project-preview-pic" size="100"></a>
                             <hr class="project-preview-hr">
                         </div>
@@ -77,7 +77,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-offset-2 col-md-8">
-                    <h4>For more information on the main developer, go <a href="{% url 'jonathon' %}">here.</a></h4>
+                    <h4>For more information on the web developer, go <a href="{% url 'jonathon' %}">here.</a></h4>
                 </div>
             </div>
         </div>
