@@ -326,11 +326,6 @@ hr {
     border: solid 2px #aaa;
 }
 
-.pull-down {
-    position: static;
-    margin-top: 30%
-}
-
 .scroll-arrow {
     margin-left: 45%;
     bottom: 0;
